@@ -22,6 +22,9 @@ alias mreu='cd ~/Documents/REU\ PPROM/mreu_gen_pprom;pwd'
 alias ll="ls -lhA"
 alias pdk='cd /Users/elizchu/Documents/REU\ PPROM/PPROM\ Compiler/Jason\ Zheng/mreu_pdk;pwd'
 alias vim="/usr/local/bin/vim"
+alias ll 'ls -lh --color'
+alias grep 'grep -n -i --color=always'
+alias rm 'rm -v'
 
 # put this in your .bash_profile
 if [ $ITERM_SESSION_ID ]; then
