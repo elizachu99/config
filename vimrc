@@ -1,3 +1,8 @@
+if &compatible
+    set nocompatible
+endif
+
+" ---------- Basics ----------
 syntax enable
 set title
 set mouse=a
@@ -6,10 +11,6 @@ set background=dark
 set autoindent
 set backspace=indent,eol,start
 colorscheme torte
-"colorscheme desert
-"colorscheme elflord
-"elflord commented out because doesn't color 'for', 'if' in Python
-"desert commented out because colors too bland for Python (3 colors mostly)
 
 set tabstop=4
 set expandtab
@@ -24,12 +25,8 @@ set smartcase
 set incsearch
 set scrolloff=3
 
-imap jj <esc>
-set timeout timeoutlen=200 ttimeoutlen=100
-
 set sm
 set history=100
-
 
 map <S-Enter> O<Esc>
 nmap <CR> o<Esc>
@@ -38,4 +35,14 @@ autocmd BufReadPre,FileReadPre * :DoJumpHl
 
 set wildmode=longest,list,full
 set wildmenu
+
+" ----------- Quick escape ----------
+imap jj <esc>
+set timeout timeoutlen=200 ttimeoutlen=100
+
+" ----------- Extras -----------
+let mapleader = ','
+" todo: NERDtree and jump to definition
+
+
 
