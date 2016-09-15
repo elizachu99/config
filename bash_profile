@@ -17,9 +17,19 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
 
 # aliases
-alias ll="ls -lh --color"
-alias grep 'grep -n -i --color=always'
-alias rm 'rm -v'
+alias ll="ls -FGlAhp --color"
+alias grep='grep -rin --color=always'
+alias rm='rm -v'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias mkdir='mkdir -pv'
+alias less='less -Fc'
+
+alias ..='cd ../'
+alias ...='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
 
 # put this in your .bash_profile
 if [ $ITERM_SESSION_ID ]; then
@@ -42,3 +52,22 @@ fi
 # voilà!
 # Note by Eli 2016/6/28: deleted \007"; ':"$PROMPT_COMMAND"; part, or else everytime you source
 # it will attempt to append echo... to PRMOPT_COMMAND, so you get multiple echos and there will be errors 
+
+#   cdf:  'Cd's to frontmost window of MacOS Finder
+#   ------------------------------------------------------
+    cdf () {
+        currFolderPath=$( /usr/bin/osascript <<EOT
+            tell application "Finder"
+                try
+            set currFolder to (folder of the front window as alias)
+                on error
+            set currFolder to (path to desktop folder as alias)
+                end try
+                POSIX path of currFolder
+            end tell
+EOT
+        )
+        echo "cd to \"$currFolderPath\""
+        cd "$currFolderPath"
+    }
+
