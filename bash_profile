@@ -19,10 +19,9 @@ export PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0
 # aliases
 alias gitmreu='cd ~/Documents/nisar-pds-fsw/tools/mreu/tools;pwd'
 alias mreu='cd ~/Documents/REU\ PPROM/mreu_gen_pprom;pwd'
-alias ll="ls -lhA"
+alias ll="ls -lh --color"
 alias pdk='cd /Users/elizchu/Documents/REU\ PPROM/PPROM\ Compiler/Jason\ Zheng/mreu_pdk;pwd'
 alias vim="/usr/local/bin/vim"
-alias ll 'ls -lh --color'
 alias grep 'grep -n -i --color=always'
 alias rm 'rm -v'
 
