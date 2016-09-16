@@ -25,6 +25,7 @@ Custom configuration files for setting up environments:
 * `%s/x/y/gi` case insensitive
 * `n` next match
 * `N` prev match
+* `:noh` clear search highlight **
 
 ### Moving around
 * `C-e` scroll down 1 line
