@@ -1,6 +1,6 @@
 # allow display of Russian/Japanese characters
 # Edit 2016/6/28: this causes terminal to display in Russian (ex. "cal" command)
-# so I turned it off. If display of special characters needed, uncomment it 
+# so I turned it off. If display of special characters needed, uncomment it
 # and source this profile by command: $ source ~/.bash_profile
 #export LANG=ru_RU.UTF-8
 
@@ -14,22 +14,56 @@ set convert-meta off
 export CLICOLOR=1
 export TERM=xterm-256color
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
+
+# bash prompt
+BLACK="\[\e[0;30m\]" # normal
+BBLACK="\[\e[1;30m\]" # bold
+BGBLACK="\[\e[40m\]" # background
+RED="\[\e[0;31m\]"
+BRED="\[\e[1;31m\]"
+BGRED="\[\e[41m\]"
+GREEN="\[\e[0;32m\]"
+BGREEN="\[\e[1;32m\]"
+BGGREEN="\[\e[42m\]"
+YELLOW="\[\e[0;33m\]"
+BYELLOW="\[\e[1;33m\]"
+BGYELLOW="\[\e[43m\]"
+BLUE="\[\e[0;34m\]"
+BBLUE="\[\e[1;34m\]"
+BGBLUE="\[\e[44m\]"
+MAGENTA="\[\e[0;35m\]"
+BMAGENTA="\[\e[1;35m\]"
+BGMAGENTA="\[\e[45m\]"
+CYAN="\[\e[0;36m\]"
+BCYAN="\[\e[1;36m\]"
+BGCYAN="\[\e[46m\]"
+WHITE="\[\e[0;37m\]"
+BWHITE="\[\e[1;37m\]"
+GRAY="\[\e[0;37m\]"
+BGGRAY="\[\e[47m\]"
+# http://bitmote.com/index.php?post/2012/11/19/Using-ANSI-Color-Codes-to-Colorize-Your-Bash-Prompt-on-Linux
+SOFTPURPLE="\[\e[38;5;183m\]" # Uses 256 colors, the "XXm" specifies which color. Range: 0~255
+GOODYELLOW="\[\e[38;5;220m\]"
+GRASSGREEN="\[\e[38;5;40m\]"
+SOFTBLUE="\[\e[38;5;111m\]"
+LIGHTBLUE="\[\e[38;5;123m\]"
+BLIGHTBLUE="\[\e[1;38;5;123m\]" # Bolded
+export PS1="${SOFTPURPLE}\u${BLUE}@${SOFTPURPLE}\h${SOFTBLUE}[\t]${BLUE}:${LIGHTBLUE}\w\n${BRED}$ ${WHITE}"
+
+# put this in your .bash_profile
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ';
+fi
 
 # aliases
-alias ll="ls -FGlAhp --color"
-alias grep='grep -rin --color=always'
-alias rm='rm -v'
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias mkdir='mkdir -pv'
-alias less='less -Fc'
+source $HOME/.bash_aliases
 
-alias ..='cd ../'
-alias ...='cd ../../'
-alias .3='cd ../../../'
-alias .4='cd ../../../../'
-alias .5='cd ../../../../../'
+# add ~/bin to PATH
+export PATH=$PATH:$HOME/bin
+
+# default editor
+export EDITOR=vi
+
 
 # put this in your .bash_profile
 if [ $ITERM_SESSION_ID ]; then
